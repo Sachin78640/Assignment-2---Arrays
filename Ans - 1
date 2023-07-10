@@ -1,0 +1,32 @@
+To maximize the sum of the minimum elements in each pair, we need to pair the smallest elements with each other, the second smallest elements with each other, and so on. This way, we ensure that the larger elements are not paired with each other and contribute to the sum.
+
+Here's a step-by-step approach to solve this problem:
+
+Sort the given array nums in non-decreasing order.
+
+Initialize a variable max_sum to store the maximum sum of the minimum elements.
+
+Iterate over the sorted array nums with a step size of 2, starting from index 0.
+
+For each pair of elements at indices i and i+1, add the smaller element to max_sum.
+
+After the loop finishes, max_sum will contain the maximum possible sum.
+
+Return max_sum as the result.
+
+Here's the implementation in Python:
+
+
+def array_pair_sum(nums):
+    nums.sort()
+    max_sum = 0
+    for i in range(0, len(nums), 2):
+        max_sum += nums[i]
+    return max_sum
+Let's test the function with the given example:
+
+
+nums = [1, 4, 3, 2]
+result = array_pair_sum(nums)
+print(result)  # Output: 4
+The function returns 4, which is the correct output for the given example.
