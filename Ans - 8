@@ -1,0 +1,46 @@
+To find the minimum score of the given array nums after applying the operation at most once for each index, we can take the following steps:
+
+1. Find the minimum and maximum values in the nums array.
+
+2. If the difference between the minimum and maximum values is less than or equal to 2 * k, return 0 as no operations are needed. The score will be 0.
+
+3. Otherwise, calculate the mid-point value as (minimum + maximum) // 2.
+
+4. Iterate over each element in the nums array and perform the following steps:
+
+5. If the element is less than or equal to the mid-point value, increase it by k.
+6. If the element is greater than the mid-point value, decrease it by k.
+7. Find the new minimum and maximum values in the modified nums array.
+
+8. Return the difference between the new maximum and minimum values as the minimum score.
+
+Here's the implementation in Python:
+
+
+def minimumScore(nums, k):
+    minimum = min(nums)
+    maximum = max(nums)
+
+    if maximum - minimum <= 2 * k:
+        return 0
+
+    mid = (minimum + maximum) // 2
+
+    for i in range(len(nums)):
+        if nums[i] <= mid:
+            nums[i] += k
+        else:
+            nums[i] -= k
+
+    new_minimum = min(nums)
+    new_maximum = max(nums)
+
+    return new_maximum - new_minimum
+Let's test the function with the given example:
+
+
+nums = [1]
+k = 0
+result = minimumScore(nums, k)
+print(result)  # Output: 0
+The function returns 0, which is the correct output for the given example. The score is 0 because there is only one element in the nums array, and no operations are needed to make the difference between the maximum and minimum values 0.
