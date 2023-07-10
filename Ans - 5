@@ -1,0 +1,33 @@
+To find the maximum product of three numbers in the given array nums, we can sort the array in non-decreasing order. There are two cases to consider:
+
+The maximum product comes from multiplying the three largest numbers in the array: In this case, we multiply the last three elements of the sorted array.
+
+The maximum product comes from multiplying the two smallest negative numbers with the largest positive number: In this case, we multiply the first two elements (which are the smallest) with the last element (which is the largest).
+
+We compare the products from both cases and return the maximum value.
+
+Here's a step-by-step approach to solve this problem:
+
+Sort the nums array in non-decreasing order.
+
+Calculate the product product1 of the last three elements in the sorted array.
+
+Calculate the product product2 of the first two elements and the last element in the sorted array.
+
+Return the maximum value between product1 and product2.
+
+Here's the implementation in Python:
+
+
+def maximumProduct(nums):
+    nums.sort()
+    product1 = nums[-1] * nums[-2] * nums[-3]
+    product2 = nums[0] * nums[1] * nums[-1]
+    return max(product1, product2)
+Let's test the function with the given example:
+
+
+nums = [1, 2, 3]
+result = maximumProduct(nums)
+print(result)  # Output: 6
+The function returns 6, which is the correct output for the given example. The maximum product of three numbers is obtained by multiplying 1, 2, and 3.
