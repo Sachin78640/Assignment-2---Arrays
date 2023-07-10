@@ -1,0 +1,40 @@
+To search for a target value in a sorted array nums with a runtime complexity of O(log n), we can use the binary search algorithm. Binary search is an efficient algorithm for finding an element in a sorted array by repeatedly dividing the search space in half.
+
+Here's a step-by-step approach to solve this problem using binary search:
+
+Initialize two pointers, left and right, pointing to the start and end of the array nums, respectively.
+
+While left is less than or equal to right, do the following:
+
+Calculate the middle index mid as (left + right) // 2.
+If nums[mid] is equal to the target, return mid as the index where the target is found.
+If nums[mid] is less than the target, update left to mid + 1 to search the right half of the array.
+If nums[mid] is greater than the target, update right to mid - 1 to search the left half of the array.
+If the target is not found during the loop, return -1 to indicate that the target does not exist in nums.
+
+Here's the implementation in Python:
+
+
+def search(nums, target):
+    left = 0
+    right = len(nums) - 1
+
+    while left <= right:
+        mid = (left + right) // 2
+
+        if nums[mid] == target:
+            return mid
+        elif nums[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+
+    return -1
+Let's test the function with the given example:
+
+
+nums = [-1, 0, 3, 5, 9, 12]
+target = 9
+result = search(nums, target)
+print(result)  # Output: 4
+The function returns 4, which is the correct output for the given example. The target value 9 is found at index 4 in the nums array.
