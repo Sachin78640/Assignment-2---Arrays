@@ -1,0 +1,42 @@
+To find the length of the longest harmonious subsequence in the given array nums, we can iterate over the array and count the frequency of each element. Then, for each element, we check if there exists another element in the array whose value differs by exactly 1. If such an element exists, we add the frequencies of both elements and update the maximum length accordingly.
+
+Here's a step-by-step approach to solve this problem:
+
+1. Create a dictionary freq to store the frequency of each element in nums.
+
+2. Iterate over each element num in nums.
+
+3. Increment the frequency of num in the freq dictionary.
+
+4. Initialize a variable max_length to 0.
+
+5. Iterate over each key key in the freq dictionary.
+
+6. Check if key + 1 exists in the freq dictionary.
+
+7. If key + 1 exists, calculate the length of the harmonious subsequence as freq[key] + freq[key + 1].
+
+8. If the calculated length is greater than max_length, update max_length with the new length.
+
+9. Return max_length as the result.
+
+Here's the implementation in Python:
+
+
+def findLHS(nums):
+    freq = {}
+    for num in nums:
+        freq[num] = freq.get(num, 0) + 1
+    max_length = 0
+    for key in freq:
+        if key + 1 in freq:
+            length = freq[key] + freq[key + 1]
+            max_length = max(max_length, length)
+    return max_length
+Let's test the function with the given example:
+
+
+nums = [1, 3, 2, 2, 5, 2, 3, 7]
+result = findLHS(nums)
+print(result)  # Output: 5
+The function returns 5, which is the correct output for the given example. The longest harmonious subsequence is [3, 2, 2, 2, 3], which has a length of 5.
