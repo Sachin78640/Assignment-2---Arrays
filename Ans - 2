@@ -1,0 +1,31 @@
+To maximize the number of different types of candies Alice can eat while following the doctor's advice, we need to determine the number of unique candy types in the given array candyType and compare it with n / 2.
+
+Here's a step-by-step approach to solve this problem:
+
+1. Create a set uniqueCandies to store the unique candy types.
+
+2. Iterate over the elements in candyType.
+
+3. For each candy type, add it to the uniqueCandies set.
+
+4. After iterating over all the candies, check the size of the uniqueCandies set.
+
+5. Compare the size of uniqueCandies with n / 2 (the number of candies Alice can eat).
+
+6. Return the minimum of the two values: min(len(uniqueCandies), n / 2).
+
+Here's the implementation in Python:
+
+
+def max_num_types(candyType):
+    uniqueCandies = set()
+    for candy in candyType:
+        uniqueCandies.add(candy)
+    return min(len(uniqueCandies), len(candyType) // 2)
+Let's test the function with the given example:
+
+
+candyType = [1, 1, 2, 2, 3, 3]
+result = max_num_types(candyType)
+print(result)  # Output: 3
+The function returns 3, which is the correct output for the given example. Alice can eat one candy of each type, which gives her the maximum number of different types of candies.
